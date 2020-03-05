@@ -34,40 +34,45 @@ public class PassengerTest {
     @DisplayName("Testing invalid title entry")
     @Test
     void testingInvalidTitle() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("M", "Bobccccccc", "12345678910", "4565555555555", 19);
         });
+        assertEquals("Invalid title provided", e.getMessage());
     }
 
     @DisplayName("Testing invalid name entry")
     @Test
     void testingInvalidName() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("Mr", "B", "12345678910", "4565555555555", 19);
         });
+        assertEquals("Name must have a minimum of 3 characters", e.getMessage());
     }
 
     @DisplayName("Testing invalid ID entry")
     @Test
     void testingInvalidID() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("Mr", "Bobccccccc", "1", "4565555555555", 19);
         });
+        assertEquals("ID must have a minimum of 10 characters", e.getMessage());
     }
 
     @DisplayName("Testing invalid phone entry")
     @Test
     void testingInvalidPhone() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("Mrs", "Bobccccccc", "12345678910", "4", 19);
         });
+        assertEquals("Phone number must have a minimum of 10 characters", e.getMessage());
     }
 
     @DisplayName("Testing invalid age entry")
     @Test
     void testingInvalidAge() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("Ms", "Bobccccccc", "12345678910", "4565555555555", 15);
         });
+        assertEquals("Passenger must be older than 16 to fly", e.getMessage());
     }
 }
