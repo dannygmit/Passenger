@@ -4,11 +4,11 @@ public class Passenger {
     private String title = "";
     private String name = "";
     private String ID = "";
-    private String phone = "";
+    private long phone = 0;
     private int age = 0;
 
 
-    public Passenger(String title, String name, String id, String phone, int age) {
+    public Passenger(String title, String name, String id, long phone, int age) {
         setTitle(title);
         setName(name);
         setID(id);
@@ -37,8 +37,8 @@ public class Passenger {
             this.ID = id;
     }
 
-    public void setPhone(String phone) {
-        if(phone.length() < 10)
+    public void setPhone(long phone) {
+        if(String.valueOf(phone).length() < 10)
             throw new IllegalArgumentException("Phone number must have a minimum of 10 characters");
         else
             this.phone = phone;
@@ -57,7 +57,7 @@ public class Passenger {
 
     public String getID() { return ID; }
 
-    public String getPhone() { return phone; }
+    public long getPhone() { return phone; }
 
     public int getAge() { return age; }
 }
